@@ -2680,3 +2680,180 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".loom"] .nav-file-tag {
   color: var(--theme-color);
   filter: hue-rotate(200deg);
 }
+
+/* Shell Terminal *
+/* === Screenshot-like "Terminal" frame for ```shell-session in Obsidian === */
+
+:root {
+  /* Frame */
+  --term-radius: 10px;
+  --term-header-h: 42px;
+
+  /* Colors close to screenshot */
+  --term-header-bg: #424654;        /* header bar */
+  --term-body-bg:   #2f333d;        /* terminal body */
+  --term-border:    rgba(255,255,255,0.06);
+
+  --term-fg:        #cfd3da;
+  --term-dim:       rgba(207, 211, 218, 0.72);
+
+  --term-shadow:    0 16px 45px rgba(0,0,0,0.45);
+}
+
+/* ---------------- Reading view (preview) ---------------- */
+.markdown-preview-view pre:has(> code.language-shell-session) {
+  position: relative;
+  margin: 1.1em 0;
+
+  border-radius: var(--term-radius);
+  overflow: hidden;
+
+  background: var(--term-body-bg);
+  border: 1px solid var(--term-border);
+  box-shadow: var(--term-shadow);
+
+  /* create room for header */
+  padding-top: var(--term-header-h);
+}
+
+/* header bar */
+.markdown-preview-view pre:has(> code.language-shell-session)::before {
+  content: "Terminal";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--term-header-h);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--term-header-bg);
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* traffic lights */
+.markdown-preview-view pre:has(> code.language-shell-session)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 0;
+  height: var(--term-header-h);
+  width: 66px;
+
+  background:
+    radial-gradient(circle at 10px 50%, #ff5f57 0 5px, transparent 6px),
+    radial-gradient(circle at 30px 50%, #febc2e 0 5px, transparent 6px),
+    radial-gradient(circle at 50px 50%, #28c840 0 5px, transparent 6px);
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* the code block content */
+.markdown-preview-view pre > code.language-shell-session {
+  display: block;
+  background: transparent; /* container provides bg */
+  color: var(--term-fg);
+
+  padding: 14px 16px 16px 16px;
+  line-height: 1.55;
+  font-size: 0.95em;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Slightly dim “secondary” lines (optional) – you can remove this if unwanted */
+.markdown-preview-view pre > code.language-shell-session .token.comment {
+  color: var(--term-dim);
+}
+
+/* selection */
+.markdown-preview-view pre > code.language-shell-session::selection {
+  background: rgba(96, 165, 250, 0.35);
+}
+
+/* ---------------- Live Preview (CodeMirror 6) ---------------- */
+.cm-editor .HyperMD-codeblock:has(.language-shell-session) {
+  position: relative;
+  margin: 0.8em 0;
+
+  border-radius: var(--term-radius);
+  overflow: hidden;
+
+  background: var(--term-body-bg);
+  border: 1px solid var(--term-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  /* room for header */
+  padding-top: var(--term-header-h);
+  padding-bottom: 10px;
+}
+
+/* header bar + title */
+.cm-editor .HyperMD-codeblock:has(.language-shell-session)::before {
+  content: "Terminal";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--term-header-h);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--term-header-bg);
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* traffic lights */
+.cm-editor .HyperMD-codeblock:has(.language-shell-session)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 0;
+  height: var(--term-header-h);
+  width: 66px;
+
+  background:
+    radial-gradient(circle at 10px 50%, #ff5f57 0 5px, transparent 6px),
+    radial-gradient(circle at 30px 50%, #febc2e 0 5px, transparent 6px),
+    radial-gradient(circle at 50px 50%, #28c840 0 5px, transparent 6px);
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* editor code lines */
+.cm-editor .HyperMD-codeblock:has(.language-shell-session) .cm-line {
+  color: var(--term-fg);
+  line-height: 1.55;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Move copy button down for shell-session blocks (Reading view) */
+.markdown-preview-view pre:has(> code.language-shell-session) button.copy-code-button,
+.markdown-preview-view pre:has(> code.language-shell-session) .copy-code-button {
+  top: calc(var(--term-header-h) + 8px) !important; /* was: meist ~8px; now below header */
+  right: 10px !important;
+}
+
+/* Optional: a bit nicer hover/contrast on dark header */
+.markdown-preview-view pre:has(> code.language-shell-session) button.copy-code-button {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.markdown-preview-view pre:has(> code.language-shell-session) button.copy-code-button:hover {
+  background: rgba(255,255,255,0.12) !important;
+}
