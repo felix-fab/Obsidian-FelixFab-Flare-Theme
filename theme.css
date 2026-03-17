@@ -2688,6 +2688,7 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".loom"] .nav-file-tag {
   /* Frame */
   --term-radius: 10px;
   --term-header-h: 42px;
+    --term-max-h: 26rem;
 
   /* Colors close to screenshot */
   --term-header-bg: #424654;        /* header bar */
@@ -2706,7 +2707,7 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".loom"] .nav-file-tag {
   margin: 1.1em 0;
 
   border-radius: var(--term-radius);
-  overflow: hidden;
+    overflow: hidden;
 
   background: var(--term-body-bg);
   border: 1px solid var(--term-border);
@@ -2763,8 +2764,31 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".loom"] .nav-file-tag {
   padding: 14px 16px 16px 16px;
   line-height: 1.55;
   font-size: 0.95em;
+    max-height: calc(var(--term-max-h) - var(--term-header-h));
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
 
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.markdown-preview-view pre > code.language-shell-session::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+.markdown-preview-view pre > code.language-shell-session::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--term-body-bg) 85%, black 15%);
+}
+
+.markdown-preview-view pre > code.language-shell-session::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--term-header-bg) 70%, white 12%);
+    border-radius: 999px;
+    border: 2px solid color-mix(in srgb, var(--term-body-bg) 90%, black 10%);
+}
+
+.markdown-preview-view pre > code.language-shell-session::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--term-header-bg) 62%, white 20%);
 }
 
 /* Slightly dim “secondary” lines (optional) – you can remove this if unwanted */
@@ -2843,8 +2867,9 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".loom"] .nav-file-tag {
 /* Move copy button down for shell-session blocks (Reading view) */
 .markdown-preview-view pre:has(> code.language-shell-session) button.copy-code-button,
 .markdown-preview-view pre:has(> code.language-shell-session) .copy-code-button {
-  top: calc(var(--term-header-h) + 8px) !important; /* was: meist ~8px; now below header */
+    top: 0px !important;
   right: 10px !important;
+    z-index: 3;
 }
 
 /* Optional: a bit nicer hover/contrast on dark header */
