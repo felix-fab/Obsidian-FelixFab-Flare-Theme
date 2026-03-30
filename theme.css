@@ -72,7 +72,7 @@
 
     /** General Colors **/
 
-    --theme-color: #ff702e;
+    --theme-color: #ff7a2f;
     
     --text-normal: var(--fg);
     --text-muted: var(--color-base-70);
@@ -83,8 +83,8 @@
     --link-color-hover: color-mix(in srgb, var(--theme-color) 85%, black 25%);;
     --link-external-color: var(--theme-color);
     --link-external-color-hover: color-mix(in srgb, var(--theme-color) 85%, black 25%);;
-    --text-accent: var(--header-blue);
-    --text-accent-hover: var(--header-purple);
+    --text-accent: var(--header-orange);
+    --text-accent-hover: var(--header-red);
 
     --link-unresolved-decoration-style: dashed;
     --link-unresolved-color: var(--theme-color);
@@ -95,7 +95,7 @@
     --code-header: #0004;
     --code-background: var(--bg-dim);
     --code-normal: var(--text-muted);
-    --code-inline: var(--fg-blue);
+    --code-inline: color-mix(in srgb, var(--header-orange) 72%, var(--text-normal));
 
     --code-normal: var(--fg);
     --code-comment: var(--grey1);
@@ -109,16 +109,26 @@
     --code-tag: var(--fg-orange);
     --code-value: var(--fg-purple);
 
-    --table-background: var(--bg2);
+    --table-background: color-mix(in srgb, var(--theme-color) 8%, var(--bg2));
     --table-column-alt-background: unset;
-    --table-row-alt-background: var(--bg1);
-    --table-header-background: var(--bg-green);
-    --table-header-background-hover: var(--bg-green);
-    --table-row-background-hover: var(--bg4);
+    --table-row-alt-background: color-mix(in srgb, var(--theme-color) 4%, var(--bg1));
+    --table-header-background: color-mix(in srgb, var(--theme-color) 12%, var(--bg2));
+    --table-header-background-hover: color-mix(in srgb, var(--theme-color) 18%, var(--bg2));
+    --table-row-background-hover: color-mix(in srgb, var(--theme-color) 8%, var(--bg4));
+    --table-border-color: color-mix(
+        in srgb,
+        var(--theme-color) 24%,
+        var(--background-modifier-border)
+    );
+    --table-header-border-color: color-mix(
+        in srgb,
+        var(--theme-color) 36%,
+        var(--background-modifier-border)
+    );
 
     --interactive-before: var(--bg4);
-    --interactive-accent: var(--header-aqua);
-    --interactive-accent-hover: var(--header-blue);
+    --interactive-accent: var(--header-orange);
+    --interactive-accent-hover: var(--header-red);
 
     --theme-color-translucent-06: hsla(var(--theme-color),0.6);
     --theme-color-translucent-04: hsla(var(--theme-color),0.4);
@@ -132,11 +142,11 @@
 
     --heading-formatting: ;
 
-    --tag-color: var(--header-blue);
+    --tag-color: var(--header-orange);
     --tag-background: hsla(var(--tag-color-hsl), 0.1);
     --tag-background-hover: hsla(var(--tag-color-hsl), 0.2);
 
-    --checkbox-color: var(--fg-blue);
+    --checkbox-color: var(--fg-orange);
 
     --canvas-dot-pattern: var(--color-base-50);
 
@@ -145,9 +155,9 @@
     --h1-color: var(--header-orange);
     --h2-color: var(--header-red);
     --h3-color: var(--header-yellow);
-    --h4-color: var(--header-green);
-    --h5-color: var(--header-blue);
-    --h6-color: var(--header-purple);
+    --h4-color: var(--header-orange);
+    --h5-color: var(--header-red);
+    --h6-color: var(--header-yellow);
 
     --h1-size: 2.125em;
     --h2-size: 1.625em;
@@ -222,13 +232,13 @@
     --fg-blue: #7fbbb3;
     --fg-purple: #d699b6;
 
-    --header-red: #da6362;
-    --header-orange: #d77f48;
-    --header-yellow: #bf983d;
-    --header-green: #899c40;
-    --header-aqua: #569d79;
-    --header-blue: #5a93a2;
-    --header-purple: #b87b9d;
+    --header-red: #df6b50;
+    --header-orange: #ef7619;
+    --header-yellow: #d7a54b;
+    --header-green: #c88f47;
+    --header-aqua: #c67a4f;
+    --header-blue: #b86d53;
+    --header-purple: #ad6457;
 
     --grey0: #7a8478;
     --grey1: #859289;
@@ -240,7 +250,7 @@
 
     --bg0-rgb: 51, 60, 67;
     --background-embed-transparent: rgba(62, 75, 80, 0.7);
-    --tag-color-hsl: 254, 80%, 68%;
+    --tag-color-hsl: 24, 85%, 58%;
 }
 
 /** Light Theme (Hard) **/
@@ -271,13 +281,13 @@
     --fg-blue: #3a94c5;
     --fg-purple: #df69ba;
 
-    --header-red: #f85552;
-    --header-orange: #f88f44;
-    --header-yellow: #f3b931;
-    --header-green: #abd113;
-    --header-aqua: #569d79;
-    --header-blue: #5a93a2;
-    --header-purple: #dd2b8d;
+    --header-red: #ee6d4a;
+    --header-orange: #f38a3e;
+    --header-yellow: #e0a93e;
+    --header-green: #d9984f;
+    --header-aqua: #cf7f52;
+    --header-blue: #bf7458;
+    --header-purple: #b66b60;
 
     --grey0: #a6b0a0;
     --grey1: #939f91;
@@ -289,7 +299,7 @@
 
     --bg0-rgb: 255, 251, 239;
     --background-embed-transparent: rgb(238 236 213 / 70%); /* Using bg2 */
-    --tag-color-hsl: 254, 80%, 68%;
+    --tag-color-hsl: 24, 85%, 56%;
 }
 
 /**** General UI ****/
@@ -469,15 +479,22 @@ body:not(.disable-menu-animations) :is(.modal, .prompt) {
 
 /** Emphasis **/
 
-/* Bold and italic */
+/* Bold */
 .cm-s-obsidian span.cm-strong,
 strong,
+.language-markdown .bold > *,
+span.cm-strong + .cm-widgetBuffer + span.math,
+span.math:has(+ .cm-widgetBuffer + span.cm-strong) {
+    color: var(--header-orange);
+}
+
+/* Italic */
 .cm-s-obsidian span.cm-em,
 em,
-.language-markdown :is(.bold, .italic) > *,
-span:is(.cm-em, .cm-strong) + .cm-widgetBuffer + span.math,
-span.math:has(+ .cm-widgetBuffer + span:is(.cm-em, .cm-strong)) {
-    color: var(--fg-purple);
+.language-markdown .italic > *,
+span.cm-em + .cm-widgetBuffer + span.math,
+span.math:has(+ .cm-widgetBuffer + span.cm-em) {
+    color: color-mix(in srgb, var(--header-yellow) 70%, var(--text-normal));
 }
 
 /* Strike through */
@@ -494,9 +511,14 @@ del {
         .cm-formatting + .cm-inline-code
     ),
 .markdown-rendered code {
-    background-color: var(--code-background);
+    background-color: color-mix(
+        in srgb,
+        var(--theme-color) 12%,
+        var(--code-background)
+    );
     padding: 0.1em 0.25em;
     border-radius: var(--radius-s);
+    border: 1px solid color-mix(in srgb, var(--theme-color) 35%, transparent);
     font-size: var(--code-size) !important; /* required for lp */
 }
 /* Fix other elements' inline code */
@@ -838,6 +860,27 @@ input.task-list-item-checkbox:checked::after {
 
 .markdown-rendered table {
     --line-height-tight: 1.375;
+    background-color: var(--table-background);
+}
+
+.markdown-rendered table :is(th, td),
+.table-view-table :is(th, td) {
+    background-color: var(--table-background);
+}
+
+.markdown-rendered table tr:nth-child(even) :is(th, td),
+.table-view-table tr:nth-child(even) :is(th, td) {
+    background-color: var(--table-row-alt-background);
+}
+
+.markdown-rendered :is(th, td),
+.table-view-table :is(th, td) {
+    border-color: var(--table-border-color);
+}
+
+.markdown-rendered th,
+.table-view-table th {
+    color: color-mix(in srgb, var(--header-orange) 80%, var(--text-normal));
 }
 
 /* Fix table margin collapse bug and add table margins */
