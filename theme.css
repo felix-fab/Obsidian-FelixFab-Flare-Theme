@@ -526,9 +526,12 @@ pre {
     border-width: 0 1px 1px;
 }
 
-/* Disable wrap on language blocks */
+/* Wrap long code lines in reading mode to match edit mode behavior */
+.markdown-reading-view .markdown-preview-view pre:not(.frontmatter),
 .markdown-reading-view .markdown-preview-view pre:not(.frontmatter) code {
-    white-space: pre;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 /* Codeblock top bars */
