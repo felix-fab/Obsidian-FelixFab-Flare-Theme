@@ -151,6 +151,7 @@
     --canvas-dot-pattern: var(--color-base-50);
 
     /** Headers **/
+    --title-color: var(--header-orange-light);
 
     --h1-color: var(--header-orange);
     --h2-color: var(--header-red);
@@ -232,6 +233,7 @@
     --fg-blue: #7fbbb3;
     --fg-purple: #d699b6;
 
+    --header-orange-light: #ff4810;
     --header-red: #df6b50;
     --header-orange: #ef7619;
     --header-yellow: #d7a54b;
@@ -2585,9 +2587,8 @@ ol > li > p {
 }
 
 /* Custom Edits */
-
 .inline-title {
-  color: var(--theme-color);
+  color: var(--title-color);
 }
 
 body:not(.remove-file-icons) .nav-file-title .nav-file-title-content:not(.mk-tree-text)::before {
